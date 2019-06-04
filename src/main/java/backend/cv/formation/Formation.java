@@ -1,14 +1,19 @@
 package backend.cv.formation;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import backend.cv.module.Module;
 import lombok.Data;
 
 @Entity
@@ -39,10 +44,15 @@ public class Formation {
     private String anneeobtention;
     
     private String moisobtention;
+
+    @OneToMany(mappedBy="formation")
+    @JsonManagedReference
+    private Collection<Module> modules;
     
     @CreationTimestamp
     private Date createdAt;
 
     @UpdateTimestamp
     private Date updatedAt;
+    
 }

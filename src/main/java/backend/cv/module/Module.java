@@ -1,14 +1,19 @@
 package backend.cv.module;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import backend.cv.formation.Formation;
 import lombok.Data;
 
 @Entity
@@ -22,7 +27,9 @@ public class Module {
 
     private String name;
 
-    private int formationId;
+    @ManyToOne
+    @JsonBackReference
+    private Formation formation;
 
     
     @CreationTimestamp
