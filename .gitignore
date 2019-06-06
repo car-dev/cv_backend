@@ -2,4 +2,4 @@
 .classpath
 .project
 target
-cv\src\main\resources\application.properties
+src\main\resources\application.properties
